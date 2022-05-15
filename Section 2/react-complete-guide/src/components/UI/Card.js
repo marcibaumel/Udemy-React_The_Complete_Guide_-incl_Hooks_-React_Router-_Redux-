@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Card(props) {
+const Card = (props) => {
 
     const classes = 'card ' + props.className;
     return (
@@ -8,4 +8,4 @@ export default function Card(props) {
     )
 }
 
-
+export default Card;
