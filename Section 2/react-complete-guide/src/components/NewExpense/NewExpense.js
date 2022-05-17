@@ -4,10 +4,10 @@ import './NewExpense.css';
 
 
 const NewExpense = () => {
-    return(
+    return (
         <>
             <div className="new-expense">
-                <ExpenseForm/>
+                <ExpenseForm />
             </div>
         </>
     )
