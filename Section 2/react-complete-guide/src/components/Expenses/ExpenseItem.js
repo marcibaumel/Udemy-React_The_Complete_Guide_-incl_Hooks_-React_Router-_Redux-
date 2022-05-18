@@ -5,8 +5,7 @@ import './ExpenseItem.css'
 
 //STATELESS/PRESENTATIONAL COMPONENT
 const ExpenseItem = (props) => {
-
-
+    
     return (
         <>
             <Card className='expense-item'>
