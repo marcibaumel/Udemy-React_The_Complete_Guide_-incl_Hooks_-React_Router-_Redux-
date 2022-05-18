@@ -12,13 +12,18 @@ const Expenses = (props) => {
         setDateFilter(selectedYear);
     }
 
+    let expensesContent = <p>No expenses founded</p>
+
+    if(props.items.filter(expense => expense.date.getFullYear().toString() === dateFilter).length > 0){
+        expensesContent =  props.items.filter(expense => expense.date.getFullYear().toString() === dateFilter).map(expense =>
+            <ExpenseItem key={expense.id} title={expense.title} amount={expense.amount} date={expense.date} />)
+    }
     return (
         <>
             <Card className='expenses'>
+
                 <ExpensesFilter selected={dateFilter} onChangeFilter={onDateFilterSave} />
-                {props.items.filter(expense => expense.date.getFullYear().toString() === dateFilter).map(expense =>
-                    <ExpenseItem key={expense.id} title={expense.title} amount={expense.amount} date={expense.date} />)
-                }
+                {expensesContent}
             </Card>
         </>
     )
