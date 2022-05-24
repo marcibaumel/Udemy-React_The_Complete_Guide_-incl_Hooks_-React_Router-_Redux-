@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Card } from '../UI/Card';
 import classes from './AddUser.module.css'
 import { Button } from '../UI/Button';
+import { ErrorModal } from '../UI/ErrorModal';
+
 
 export const AddUser = (props) => {
 
@@ -31,6 +33,9 @@ export const AddUser = (props) => {
     }
 
     return (
+        <>
+        
+        <ErrorModal title="Error" message="ppp"/>
         <Card className={classes.input}>
             <form onSubmit={addUserHandler}>
                 <label htmlFor='username'>Username</label>
@@ -40,6 +45,7 @@ export const AddUser = (props) => {
                 <Button type="submit">Add User</Button>
             </form>
         </Card>
+        </>
 
     )
 }
