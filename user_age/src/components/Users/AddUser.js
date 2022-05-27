@@ -7,8 +7,8 @@ import { Wrapper } from '../Helpers/Wrapper';
 
 export const AddUser = (props) => {
 
-    const nameInputRef =  useRef();
-    const ageInputRef =  useRef();
+    const nameInputRef = useRef();
+    const ageInputRef = useRef();
 
     const [enteredUsername, setEnteredUsername] = useState('');
     const [enteredAge, setEnteredAge] = useState('');
