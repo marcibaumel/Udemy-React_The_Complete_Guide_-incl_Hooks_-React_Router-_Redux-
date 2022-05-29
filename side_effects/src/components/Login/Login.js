@@ -24,7 +24,15 @@ const Login = (props) => {
       clearTimeout(identifier);
     };
 
-  }, [enteredEmail, enteredPassword])
+  }, [enteredEmail, enteredPassword]);
+
+  useEffect(() => {
+    console.log('EFFECT RUNNINg')
+
+    return(() => {
+      console.log('CLEANUP')
+    })
+  }, []);
 
   const emailChangeHandler = (event) => {
     setEnteredEmail(event.target.value);
