@@ -11,6 +11,7 @@ const Login = (props) => {
   const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
 
+  /*
   useEffect(() => {
     
     const identifier = setTimeout(() => {
@@ -33,7 +34,8 @@ const Login = (props) => {
       console.log('CLEANUP')
     })
   }, []);
-
+  */
+ 
   const emailChangeHandler = (event) => {
     setEnteredEmail(event.target.value);
   };
