@@ -8,8 +8,6 @@ function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-
-
   useEffect(() => {
     const storedUSerLoggedInInformation = localStorage.getItem('isLoggedIn')
 
