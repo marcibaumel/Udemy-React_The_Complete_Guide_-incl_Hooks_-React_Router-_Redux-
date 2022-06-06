@@ -25,6 +25,7 @@ export const AddUser = (props) => {
     const addUserHandler = (event) => {
         event.preventDefault();
         const enteredName = nameInputRef.current.value;
+        console.log(enteredName)
         const enteredUserAge = ageInputRef.current.value;
         if (enteredName.trim().length === 0 || enteredUserAge.trim().length === 0) {
             setError({
