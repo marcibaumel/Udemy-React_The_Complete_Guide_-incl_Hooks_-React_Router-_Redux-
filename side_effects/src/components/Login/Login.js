@@ -49,6 +49,7 @@ const Login = (props) => {
     };
   }, [emailIsValid, passwordIsValid]);
 
+  /*
   useEffect(() => {
     console.log('EFFECT RUNNINg')
 
@@ -56,7 +57,7 @@ const Login = (props) => {
       console.log('CLEANUP')
     })
   }, []);
-
+  */
 
 
 
