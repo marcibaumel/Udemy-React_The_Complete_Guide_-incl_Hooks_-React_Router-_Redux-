@@ -4,6 +4,7 @@ import classes from './Header.module.css'
 import { HeaderCartButton } from './HeaderCartButton'
 
 export const Header = (props) => {
+
     return (
         <>
             <header className={classes.header}>
