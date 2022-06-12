@@ -7,14 +7,14 @@ export const Cart = (props) => {
         <li>{item.name}</li>)}</ul>;
 
     return (
-        <Modal>
+        <Modal onClose={props.onClose}>
             {cartItems}
             <div className={classes.total}>
                 <span>Total AMount</span>
                 <span>35.6</span>
             </div>
             <div className={classes.actions}>
-                <button className={classes['button--alt']}>Close</button>
+                <button onClick={props.onClose} className={classes['button--alt']}>Close</button>
                 <button className={classes.button}>Order</button>
             </div>
         </Modal>
