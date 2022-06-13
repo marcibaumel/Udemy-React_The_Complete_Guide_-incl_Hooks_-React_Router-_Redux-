@@ -5,13 +5,13 @@ import classes from './HeaderCartButton.module.css'
 import { createFactory } from 'react/cjs/react.production.min'
 
 export const HeaderCartButton = (props) => {
-  const[btnIsHighlighted, setBtnIsHighLighted] = useState(false);
+  const [btnIsHighlighted, setBtnIsHighLighted] = useState(false);
   const cartCtx = useContext(CartContext);
-  const {items} = cartCtx
+  const { items } = cartCtx
   const btnClasses = `${classes.button} ${btnIsHighlighted ? classes.bump : ''}`
 
   useEffect(() => {
-    if(items.length === 0){
+    if (items.length === 0) {
       return;
     }
     setBtnIsHighLighted(true)
