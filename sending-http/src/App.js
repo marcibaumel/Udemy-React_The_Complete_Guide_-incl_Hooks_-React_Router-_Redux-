@@ -4,7 +4,7 @@ import MoviesList from './components/MoviesList';
 import './App.css';
 
 function App() {
-  
+
   const [movies, setMovies] = useState([])
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -25,7 +25,7 @@ function App() {
 
       const loadedMovies = [];
 
-      for(const key in data){
+      for (const key in data) {
         loadedMovies.push({
           id: key,
           title: data[key].title,
@@ -33,7 +33,7 @@ function App() {
           releaseDate: data[key].releaseDate
         })
       }
-      
+
       setMovies(loadedMovies)
 
     } catch (error) {
@@ -46,7 +46,7 @@ function App() {
     fetchMoviesHandler()
   }, [fetchMoviesHandler]);
 
-  async function addMovieHandler(movie){
+  async function addMovieHandler(movie) {
     const response = await fetch(process.env.REACT_APP_FIREBASE_URL, {
       method: 'POST',
       body: JSON.stringify(movie),
@@ -76,7 +76,7 @@ function App() {
   return (
     <React.Fragment>
       <section>
-        <AddMovie onAddMovie={addMovieHandler}/>
+        <AddMovie onAddMovie={addMovieHandler} />
       </section>
       <section>
         <button onClick={fetchMoviesHandler}>Fetch Movies</button>
