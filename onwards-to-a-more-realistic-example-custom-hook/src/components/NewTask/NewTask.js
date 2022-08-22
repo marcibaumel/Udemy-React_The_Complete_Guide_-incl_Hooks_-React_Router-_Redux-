@@ -12,7 +12,7 @@ const NewTask = (props) => {
     setError(null);
     try {
       const response = await fetch(
-        'https://react-http-6b4a6.firebaseio.com/tasks.json',
+        process.env.REACT_APP_FIREBASE_URL,
         {
           method: 'POST',
           body: JSON.stringify({ text: taskText }),
