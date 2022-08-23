@@ -1,4 +1,8 @@
+import {useRef, useState} from "react";
+
 const SimpleInput = (props) => {
+
+
   return (
     <form>
       <div className='form-control'>
