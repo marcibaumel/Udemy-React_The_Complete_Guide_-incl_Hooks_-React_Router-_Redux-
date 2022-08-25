@@ -1,14 +1,19 @@
 import {useState, useEffect} from "react";
+import {useInput} from "../hooks/use-input";
 
 const SimpleInput = (props) => {
 
-    const [enteredName, setEnteredName] = useState('');
-    const [enteredNameTouch, setEnteredNameTouch] = useState(false);
+    const {
+        value: enteredName,
+        isValid: enteredNameIsValid,
+        hasError: nameInputHasError,
+        valueChangeHandler: nameChangeHandler,
+        inputBluerHandler: nameBlurHandler,
+        reset, resetNameInput
+    } = useInput(value => value.trim() != '');
 
 
-    const enteredNameIsValid = enteredName.trim() !== '';
-    const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouch;
-    const nameInputClasses = nameInputIsInvalid ? 'form-control invalid' : 'form-control'
+    const nameInputClasses = nameInputHasError ? 'form-control invalid' : 'form-control'
 
     let formIsValid = false;
 
@@ -16,26 +21,16 @@ const SimpleInput = (props) => {
         formIsValid = true;
     }
 
-    const nameInputChangeHandler = event => {
-        setEnteredName(event.target.value);
-    }
 
     const formSubmissionHandler = event => {
         event.preventDefault()
-
-        setEnteredNameTouch(true);
 
         if (!enteredNameIsValid) {
             return;
         }
 
         console.log(enteredName)
-        setEnteredName('');
-        setEnteredNameTouch(false);
-    }
-
-    const nameInputBluerHandler = event => {
-        setEnteredNameTouch(true);
+        resetNameInput();
     }
 
     return (
@@ -45,11 +40,11 @@ const SimpleInput = (props) => {
                 <input
                     type='text'
                     id='name'
-                    onChange={nameInputChangeHandler}
-                    onBlur={nameInputBluerHandler}
+                    onChange={nameChangeHandler}
+                    onBlur={nameBlurHandler}
                     value={enteredName}
                 />
-                {nameInputIsInvalid && <p className="error-text">Not must not be empty</p>}
+                {nameInputHasError && <p className="error-text">Not must not be empty</p>}
             </div>
             <div className="form-actions">
                 <button disabled={!formIsValid}>Submit</button>
