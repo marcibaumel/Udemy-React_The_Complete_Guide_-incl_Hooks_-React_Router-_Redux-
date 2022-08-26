@@ -73,7 +73,8 @@ const BasicForm = (props) => {
             </div>
             <div className={emailClasses}>
                 <label htmlFor='name'>E-Mail Address</label>
-                <input type='text' id='name' value={emailValue} onChange={emailChangeHandler} onBlur={emailBlurHandler}/>
+                <input type='text' id='name' value={emailValue} onChange={emailChangeHandler}
+                       onBlur={emailBlurHandler}/>
                 {emailHasError && <p>Please enter a valid email</p>}
             </div>
             <div className='form-actions'>
