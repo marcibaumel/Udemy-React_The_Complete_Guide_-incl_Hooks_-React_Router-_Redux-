@@ -66,8 +66,7 @@ const BasicForm = (props) => {
                 </div>
                 <div className={lastNameClasses}>
                     <label htmlFor='name'>Last Name</label>
-                    <input type='text' id='name' value={lastNameValue} onChange={lastNameChangeHandler}
-                           onBlur={lastNameBlurHandler}/>
+                    <input type='text' id='name' value={lastNameValue} onChange={lastNameChangeHandler} onBlur={lastNameBlurHandler}/>
                     {lastNameHasError && <p>Please enter a last name</p>}
                 </div>
             </div>
