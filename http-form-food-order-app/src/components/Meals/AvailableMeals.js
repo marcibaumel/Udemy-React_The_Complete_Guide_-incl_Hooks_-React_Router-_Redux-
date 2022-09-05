@@ -10,9 +10,11 @@ import {MealItem} from './MealItem/MealItem';
 export const AvailableMeals = () => {
 
     const [meals, setMeals] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const fetchMeals = async () => {
+
             const response = await fetch(process.env.REACT_APP_FIREBASE_URL);
             const responseData = await response.json();
 
@@ -28,11 +30,19 @@ export const AvailableMeals = () => {
             }
 
             setMeals(loadedMeals);
+            setIsLoading(false);
         };
 
         fetchMeals();
     }, []);
 
+    if(isLoading){
+        return (
+        <section className={classes.MealsLoading}>
+            <p> Loading...</p>
+        </section>
+        )
+    }
     const mealList = meals.map((meal) =>
         <MealItem id={meal.id} key={meal.id} name={meal.name} description={meal.description} price={meal.price}/>
     );
