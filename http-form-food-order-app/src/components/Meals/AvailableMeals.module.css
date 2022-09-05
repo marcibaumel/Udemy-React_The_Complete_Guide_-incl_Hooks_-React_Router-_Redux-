@@ -15,6 +15,11 @@
       text-align: center;
       color: white;
   }
+
+.MealsError{
+    text-align: center;
+    color: #ff0000;
+}
   
   @keyframes meals-appear {
     from {
