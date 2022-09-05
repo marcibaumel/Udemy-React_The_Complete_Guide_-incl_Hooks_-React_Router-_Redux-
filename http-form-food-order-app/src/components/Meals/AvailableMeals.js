@@ -3,6 +3,8 @@ import classes from './AvailableMeals.module.css'
 import {Card} from '../UI/Card';
 import {MealItem} from './MealItem/MealItem';
 
+//process.env.REACT_APP_FIREBASE_URL
+
 const DUMMY_MEALS = [
     {
         id: 'm1',
