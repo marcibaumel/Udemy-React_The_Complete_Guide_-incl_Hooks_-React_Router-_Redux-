@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, {useReducer} from 'react'
 import CartContext from './cart-context'
 
 
@@ -40,10 +40,10 @@ const cartReducer = (state, action) => {
         const existingItem = state.items[existingCartItemIndex];
         const updatedTotalAmount = state.totalAmount - existingItem.price;
         let updatedItems;
-        if(existingItem.amount === 1){
+        if (existingItem.amount === 1) {
             updatedItems = state.items.filter(item => item.id !== action.id);
-        }else{
-            const updatedItem = {...existingItem, amount: existingItem.amount -1};
+        } else {
+            const updatedItem = {...existingItem, amount: existingItem.amount - 1};
             updatedItems = [state.items];
             updatedItems[existingCartItemIndex] = updatedItem;
         }
@@ -51,6 +51,9 @@ const cartReducer = (state, action) => {
             items: updatedItems,
             totalAmount: updatedTotalAmount
         }
+    }
+    if (action.type === 'CLEAR') {
+        return defaultCartState;
     }
 
     return defaultCartState;
@@ -61,18 +64,23 @@ export const CartProvider = (props) => {
     const [cartState, dispatchCartAction] = useReducer(cartReducer, defaultCartState);
 
     const addItemCartHandler = (item) => {
-        dispatchCartAction({ type: 'ADD_ITEM', item: item });
+        dispatchCartAction({type: 'ADD_ITEM', item: item});
     }
 
     const removeItemFromCartHandler = (id) => {
-        dispatchCartAction({ type: 'REMOVE_ITEM', id: id });
+        dispatchCartAction({type: 'REMOVE_ITEM', id: id});
+    }
+
+    const clearCartHandler = () => {
+        dispatchCartAction({type: 'CLEAR'})
     }
 
     const cartContext = {
         items: cartState.items,
         totalAmount: cartState.totalAmount,
         addItem: addItemCartHandler,
-        removeItem: removeItemFromCartHandler
+        removeItem: removeItemFromCartHandler,
+        clearCart: clearCartHandler,
     };
 
     return (
