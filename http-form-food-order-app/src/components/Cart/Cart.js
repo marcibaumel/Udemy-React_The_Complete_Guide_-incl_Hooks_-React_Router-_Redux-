@@ -26,6 +26,16 @@ export const Cart = (props) => {
         setIsCheckout(true);
     };
 
+    const submitOrderHandler = (userData) => {
+        fetch(process.env.REACT_APP_FIREBASE_URL_ORDER,{
+            method:'POST',
+            body: JSON.stringify({
+                user: userData,
+                orderItems: cartCtx.items
+            })
+        });
+    }
+
     const cartItems = (
         <ul className={classes['cart-items']}>{cartCtx.items.map(item =>
             <CartItem
@@ -49,7 +59,7 @@ export const Cart = (props) => {
                 <span>Total AMount</span>
                 <span>{totalAmount}</span>
             </div>
-            {isCheckout && <Checkout onCancel={props.onClose}/>}
+            {isCheckout && <Checkout onConfirm={submitOrderHandler} onCancel={props.onClose}/>}
             {!isCheckout && modalActions}
 
         </Modal>
