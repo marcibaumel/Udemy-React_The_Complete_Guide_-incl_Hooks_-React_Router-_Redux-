@@ -5,8 +5,8 @@ import Auth from "./components/Auth";
 function App() {
     return (
         <>
-          <Header/>
-          <Auth/>
+            <Header/>
+            <Auth/>
             <Counter/>
         </>
     );
