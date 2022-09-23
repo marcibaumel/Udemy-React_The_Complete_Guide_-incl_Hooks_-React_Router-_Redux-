@@ -41,8 +41,8 @@ function App() {
             }))
         }
 
-        if(isInitial){
-            isInitial= false;
+        if (isInitial) {
+            isInitial = false;
             return;
         }
 
