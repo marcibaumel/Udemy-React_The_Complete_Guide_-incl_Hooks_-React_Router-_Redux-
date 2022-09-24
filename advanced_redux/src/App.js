@@ -15,17 +15,17 @@ function App() {
     const cart = useSelector(state => state.cart);
     const notification = useSelector(state => state.ui.notification);
 
-    useEffect(()=> {
+    useEffect(() => {
         dispatch(fetchCartData())
     }, [dispatch])
 
     useEffect(() => {
-        if(isInitial){
-            isInitial=false;
+        if (isInitial) {
+            isInitial = false;
             return
         }
 
-        if(cart.changed){
+        if (cart.changed) {
             dispatch(sendCartData(cart));
         }
     }, [cart, dispatch])
