@@ -1,24 +1,24 @@
 import {uiActions} from "./ui-slice";
 import {cartAction} from "./cart-slice";
 
-export const fetchCartData = () =>{
-    return  async dispatch => {
+export const fetchCartData = () => {
+    return async dispatch => {
         const fetchData = async () => {
             const response = await fetch('https://react-http-1bf8b-default-rtdb.europe-west1.firebasedatabase.app/cart.json');
-            if(!response.ok){
+            if (!response.ok) {
                 throw  new Error('Could not fetch cart data');
             }
             const data = await response.json();
             return data;
         }
 
-        try{
+        try {
             const cartData = await fetchData();
             dispatch(cartAction.replaceCart({
                 items: cartData.items || [],
                 totalQuantity: cartData.totalQuantity,
             }));
-        }catch (error){
+        } catch (error) {
             dispatch(uiActions.showNotification({
                 status: 'error',
                 title: 'Error!',
