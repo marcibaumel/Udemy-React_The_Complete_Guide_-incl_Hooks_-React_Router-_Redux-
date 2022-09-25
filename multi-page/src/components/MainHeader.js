@@ -2,7 +2,7 @@ import {Link} from "react-router-dom";
 
 
 export const MainHeader = () => {
-    return(
+    return (
         <header>
             <ul>
                 <li>
