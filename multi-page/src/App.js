@@ -30,7 +30,6 @@ function App() {
 
 export default App;
 
-
 //domain => comp a
 //domain/b => comp b
 //domain/product-detail/id => comp detail
